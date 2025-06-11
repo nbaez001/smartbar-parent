@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: Smartbar Backoffice AP
+  description: Smartbar Backoffice AP
+  version: 1.0.0
+paths:
+  /categories:
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: array,
+                items:
+                  $ref: "#/components/schemas/category"
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/category"
+      responses:
+        201:
+          $ref: "#/components/schemas/category"
+  /categories/{categoryId}:
+    parameters:
+      - name: categoryId
+        in: path
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/category"
+      responses:
+        200:
+          description: Entity successfully updated
+    delete:
+      responses:
+        200:
+          description: Entity successfully deleted
+    get:
+      responses:
+        200:
+          content:
+            application/json:
+              schema: "#/components/schemas/category"
+  /articles:
+  /articles/{articleId}:
+  /tables:
+  /tables/{tableId}:
+components:
+  schemas:
+    category:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
